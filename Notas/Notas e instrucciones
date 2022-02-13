@@ -1,0 +1,23 @@
+Lectura del sensor analogico con el ESP32CAM
+
+1. Realizar ciruito
+
+2. Hacer codigo de lectura del sensor
+
+3. Hacer el flow que recibe el dato por serial
+
+4. Colocar el flow en raspberry Pi
+	-Instalar node js en Raspberry pi
+	-Instalar NodeRed en RPi
+	-Instalar nodo serial en RPi
+	-Cargar el flow
+	
+5. Agregar comunicacion MQTT al flow en RPi
+	-Agregar nodo MQTT
+	-Agregar broker con la IP de la VM
+	-ifconfig 192.168.15.29
+	
+Notas
+
+Abrir puerto 1883
+	-sudo ufw allow 1883

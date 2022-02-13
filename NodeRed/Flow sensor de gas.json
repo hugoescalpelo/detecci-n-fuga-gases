@@ -1,0 +1,102 @@
+[
+    {
+        "id": "df03a893.e70058",
+        "type": "tab",
+        "label": "Flow 13",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cae3776.234a908",
+        "type": "serial in",
+        "z": "df03a893.e70058",
+        "name": "",
+        "serial": "de82c5b2.3f5648",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "7ef9ce90.797ed",
+                "8cd4b8c0.a5ea1"
+            ]
+        ]
+    },
+    {
+        "id": "7ef9ce90.797ed",
+        "type": "debug",
+        "z": "df03a893.e70058",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "8cd4b8c0.a5ea1",
+        "type": "mqtt out",
+        "z": "df03a893.e70058",
+        "name": "",
+        "topic": "codigoIoT/SIC/RPi",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "353bdc1b.50448c",
+        "x": 490,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "de82c5b2.3f5648",
+        "type": "serial-port",
+        "serialport": "/dev/ttyUSB0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "353bdc1b.50448c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.15.29",
+        "port": "1883",
+        "clientid": "hugo-8887",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
