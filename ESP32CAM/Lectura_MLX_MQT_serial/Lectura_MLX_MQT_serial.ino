@@ -61,5 +61,6 @@ void loop() {
   Serial.print (lecturaMLX);
   Serial.print (",");
   Serial.println (lecturaMQ6);  
+  delay (1000);
 
 }
