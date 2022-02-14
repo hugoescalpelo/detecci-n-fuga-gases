@@ -21,3 +21,22 @@ Notas
 
 Abrir puerto 1883
 	-sudo ufw allow 1883
+	
+Lectura de dos sensores
+
+-Procedimiento mezcla de programas
+	-Identificar bibliotecas
+	-Idetificar objetos
+	-Identificar variables
+	-Identificar inicializadores
+	-Identificar lecturas
+	-Identificar envios
+	
+Herramientas
+
+Diseñar mi propio protocolo
+
+[temperatura] 	[separador]	[gas]		[salto de linea]
+int		,		int		/n
+-50, 680 	,		0-4096		/n
+26,485/n
