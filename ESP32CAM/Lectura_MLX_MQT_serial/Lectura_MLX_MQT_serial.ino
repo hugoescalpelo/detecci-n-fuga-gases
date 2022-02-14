@@ -60,6 +60,6 @@ void loop() {
   //Envio de datos
   Serial.print (lecturaMLX);
   Serial.print (",");
-  Serial.println (lecturaQM6);  
+  Serial.println (lecturaMQ6);  
 
 }
