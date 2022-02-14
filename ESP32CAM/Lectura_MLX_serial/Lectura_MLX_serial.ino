@@ -3,6 +3,12 @@
   Fecha: 14 de febrero de 2022
 
   Este programa hace una comunicacinó simple
+
+  MLX   ESP32CAM
+  VCC---5V
+  GND---GND
+  SDA---14
+  SCL---15
  ****************************************************/
 //Bliblioteca
 #include <Adafruit_MLX90614.h>

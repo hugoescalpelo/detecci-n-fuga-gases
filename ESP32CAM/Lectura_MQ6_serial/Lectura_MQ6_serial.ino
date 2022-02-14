@@ -12,9 +12,11 @@
  * 
  */
 
-int lectura;
-int mq6 = 12;
+//Variables
+int lectura; //Aqui se guarda el dato del sensor
+int mq6 = 12; //Aqui se conecta el sensor
 
+//Inicializacion del programa
 void setup() {
   //se inicia comunicación serial
   Serial.begin (115200);
@@ -27,6 +29,7 @@ void setup() {
   delay (1000);
 }
 
+//Cuerpo del programa
 void loop() {
   // put your main code here, to run repeatedly:
   lectura = analogRead (mq6);
@@ -36,5 +39,5 @@ void loop() {
   } else {
     Serial.println ("0");
   }
-  delay (2000);
+  delay (2000); //Espera de 2 segundos
 }
