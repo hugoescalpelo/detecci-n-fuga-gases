@@ -1,0 +1,247 @@
+[
+    {
+        "id": "e30ad91005f1eb15",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2e93c95a4d1673ed",
+        "type": "serial in",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "serial": "39065422394ad7cc",
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "e06438c09ea5b4af"
+            ]
+        ]
+    },
+    {
+        "id": "e06438c09ea5b4af",
+        "type": "split",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "splt": ",",
+        "spltType": "str",
+        "arraySplt": "1",
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "topic",
+        "x": 330,
+        "y": 100,
+        "wires": [
+            [
+                "e1520a57ae2d9d82"
+            ]
+        ]
+    },
+    {
+        "id": "e1520a57ae2d9d82",
+        "type": "function",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "func": "if (msg.parts.index == 0) {\n    global.set (\"temperatura\", msg.payload);\n} if (msg.parts.index == 1) {\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 100,
+        "wires": [
+            [
+                "73cc52e19feae795"
+            ]
+        ]
+    },
+    {
+        "id": "73cc52e19feae795",
+        "type": "split",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 790,
+        "y": 100,
+        "wires": [
+            [
+                "757171af92be5837"
+            ]
+        ]
+    },
+    {
+        "id": "757171af92be5837",
+        "type": "function",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "func": "if (msg.parts.index == 0) {\n    global.set (\"co2\", msg.payload);\n} \nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5bb930ec817a4d7b",
+        "type": "mqtt out",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "topic": "codigoIoT/temperatura",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4c813f31182353e5",
+        "x": 600,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "97d596e6265fba06",
+        "type": "mqtt out",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "topic": "codigoIoT/co2",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4c813f31182353e5",
+        "x": 580,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "d6d05888b8ab7a6a",
+        "type": "inject",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "5a655ff9e9d7e7e5",
+                "a03620640b2b7120"
+            ]
+        ]
+    },
+    {
+        "id": "5a655ff9e9d7e7e5",
+        "type": "function",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "func": "msg.payload = global.get (\"temperatura\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 260,
+        "wires": [
+            [
+                "5bb930ec817a4d7b"
+            ]
+        ]
+    },
+    {
+        "id": "a03620640b2b7120",
+        "type": "function",
+        "z": "e30ad91005f1eb15",
+        "name": "",
+        "func": "msg.payload = global.get (\"co2\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "97d596e6265fba06"
+            ]
+        ]
+    },
+    {
+        "id": "39065422394ad7cc",
+        "type": "serial-port",
+        "serialport": "/dev/ttyUSB0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "4c813f31182353e5",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.15.29",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
